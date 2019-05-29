@@ -7,12 +7,17 @@
     "tsuml": "dist/bin/index.js"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
     "@types/glob": "5.0.35",
     "@types/lodash": "4.14.106",
+    "@types/mocha": "^5.2.6",
     "@types/node": "9.6.0",
     "@types/opn": "5.1.0",
     "@types/request": "2.47.0",
-    "@types/yargs": "11.0.0"
+    "@types/yargs": "11.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "ts-node": "^8.2.0"
   },
   "dependencies": {
     "chalk": "2.3.2",
@@ -25,7 +30,7 @@
     "yargs": "11.0.0"
   },
   "scripts": {
-    "test": "tsc -p tsconfig.json"
+    "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
