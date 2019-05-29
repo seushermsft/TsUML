@@ -10,6 +10,10 @@ Generate UML diagram for your TypeScript applications powered by <https://yuml.m
 
 ![CLI example](/assets/cli-preview.gif)
 
+## Build Status
+
+[![Build Status](https://travis-ci.com/seushermsft/TsUML.svg?branch=master)](https://travis-ci.com/seushermsft/TsUML)
+
 ## Security
 
 This tool sends the class hierarchy of your typescript codebase to [yuml.me](yuml.me).
