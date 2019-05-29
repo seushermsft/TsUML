@@ -1,8 +1,6 @@
 import { getDsl } from './index';
 import { expect } from 'chai';
 import 'mocha';
-import { YumlEmitter } from './emitters/yumlemitter';
-import { PlantUmlEmitter } from './emitters/plantumlemitter';
 import { EmitterFactory } from './emitters/emitterfactory';
 
 describe('getDSL', () => {
@@ -23,13 +21,13 @@ describe('getDSL', () => {
 interface Named
 
 class BaseWeapon {
-damage;
+damage
 
 } 
 
 class Katana {
-name;
-tryHit();
+name
+tryHit()
 } 
 
 BaseWeapon <|-- Katana 
@@ -39,8 +37,8 @@ Weapon <|-- Katana
 Named <|-- Katana 
 
 class Ninja {
-_weapon;
-fight();
+_weapon
+fight()
 } 
 `;
 

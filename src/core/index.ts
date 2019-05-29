@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { flatten, join } from "lodash";
+import { flatten } from "lodash";
 import { findFilesByGlob } from "./io";
 import { getAst, parseClasses, parseInterfaces, parseHeritageClauses } from "./parser";
 import { IEmitter } from "./interfaces";

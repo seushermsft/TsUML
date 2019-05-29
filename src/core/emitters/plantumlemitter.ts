@@ -8,7 +8,7 @@ export class PlantUmlEmitter implements IEmitter  {
     }
 
     emitSingleInterface(name: string, properties: PropertyDetails[], methods: MethodDetails[]) {
-        return PlantUmlEmitter.templates.interface(name, properties, methods);
+        return PlantUmlEmitter.templates.interface(name);
     }
     
     emitHeritageClauses(heritageClauses: HeritageClause[]) {
@@ -32,17 +32,15 @@ export class PlantUmlEmitter implements IEmitter  {
         colorClass: (name: string) => `${name}`,
         colorInterface: (name: string) => `interface ${name}`,
         class: (name: string, props: PropertyDetails[], methods: MethodDetails[]) => {
-            const pTemplate = (property: PropertyDetails) => `${property.name};`;
-            const mTemplate = (method: MethodDetails) => `${method.name}();`;
+            const pTemplate = (property: PropertyDetails) => `${property.name}`;
+            const mTemplate = (method: MethodDetails) => `${method.name}()`;
             return (
             `class ${PlantUmlEmitter.templates.colorClass(name)} {\n` +
-            `${props.map(pTemplate).join(";")}\n` + `${methods.map(mTemplate).join(";")}\n` + "} \n"
+            `${props.map(pTemplate).join("\n")}\n` + `${methods.map(mTemplate).join("\n")}\n` + "} \n"
             );
         },
         interface: (
-            name: string,
-            props: PropertyDetails[],
-            methods: MethodDetails[]
+            name: string
         ) => {
             return (
             `${PlantUmlEmitter.templates.colorInterface(name)}\n`
