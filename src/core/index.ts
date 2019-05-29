@@ -2,9 +2,9 @@ import chalk from "chalk";
 import { flatten, join } from "lodash";
 import { findFilesByGlob } from "./io";
 import { getAst, parseClasses, parseInterfaces, parseHeritageClauses } from "./parser";
-import { emitSingleClass, emitSingleInterface, emitHeritageClauses } from "./emitter";
+import { IEmitter } from "./interfaces";
 
-export async function getDsl(tsConfigPath: string, pattern: string) {
+export async function getDsl(tsConfigPath: string, pattern: string, emitter: IEmitter) {
 
   const sourceFilesPaths = await findFilesByGlob(pattern);
 
@@ -32,12 +32,12 @@ export async function getDsl(tsConfigPath: string, pattern: string) {
 
   // emitter
   const entities = declarations.map(d => {
-    const classes = d.classes.map((c) => emitSingleClass(c.className, c.properties, c.methods));
-    const interfaces = d.interfaces.map((i) => emitSingleInterface(i.interfaceName, i.properties, i.methods));
-    const heritageClauses = d.heritageClauses.map(emitHeritageClauses);
+    const classes = d.classes.map((c) => emitter.emitSingleClass(c.className, c.properties, c.methods));
+    const interfaces = d.interfaces.map((i) => emitter.emitSingleInterface(i.interfaceName, i.properties, i.methods));
+    const heritageClauses = flatten(d.heritageClauses.map(emitter.emitHeritageClauses));
     return [...classes, ...interfaces, ...heritageClauses];
   });
 
-  return join(flatten(entities), ",");
+  return emitter.postProcess(flatten(entities));
 
 }
