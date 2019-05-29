@@ -1,6 +1,5 @@
 import Ast, * as SimpleAST from "ts-simple-ast";
 import * as ts from "typescript";
-import { flatten, join } from "lodash";
 import { PropertyDetails, MethodDetails, HeritageClause } from "./interfaces";
 
 export function getAst(tsConfigPath: string, sourceFilesPaths?: string[]) {

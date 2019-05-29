@@ -1,6 +1,5 @@
 import * as glob from "glob";
 import * as request from "request";
-import * as fs from "fs";
 
 export async function findFilesByGlob(pattern: string) {
     return new Promise<string[]>((res, rej) => {
@@ -14,9 +13,9 @@ export async function findFilesByGlob(pattern: string) {
     });
 }
 
-export async function download(dsl: string) {
+export async function download(yumlUri: string, dsl: string) {
     return new Promise<string>((resolve, reject) => {
-        const url = "https://yuml.me/diagram/plain/class/";
+        const url = `${yumlUri}/diagram/plain/class/`;
         const options = {
             form: {
                 dsl_text: dsl
