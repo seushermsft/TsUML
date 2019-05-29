@@ -64,13 +64,13 @@ interface Weapon
 interface Named
 
 class BaseWeapon {
-damage;
+damage
 
 }
 
 class Katana {
-name;
-tryHit();
+name
+tryHit()
 }
 
 BaseWeapon <|-- Katana
@@ -80,8 +80,8 @@ Weapon <|-- Katana
 Named <|-- Katana
 
 class Ninja {
-_weapon;
-fight();
+_weapon
+fight()
 }
 ```
 
